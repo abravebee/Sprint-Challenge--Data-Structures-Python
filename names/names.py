@@ -34,45 +34,49 @@ class BinarySearchTree:
     def contains(self, target):
         # compare target to root
         if target == self.value:
-            print(f"target {target} == self.value {self.value}")
             return True
         # if it's smaller, check left side
         elif target < self.value:
-            print(f"target {target} < self.value {self.value}")
             # first check that there is a left side; if not, return False
             if not self.left:
-                print("no self.left")
                 return False
             # else, if it doesn't match the left side, call contains on left side with same target
             elif target != self.left:
-                print(f"target {target} != self.left {self.left}")
                 return self.left.contains(target)
             else:
-                print(f"target {target} == self.left {self.left}")
                 return True
         # else, check right side
         elif target > self.value:
-            print(f"target {target} > self.value {self.value}")
             # first check that there is a right side; if not, return False
             if not self.right:
-                print("no self.right")
                 return False
             # else, if it doesn't match the right side, call contains on right side with same target
             elif target != self.right:
-                print(f"target {target} != self.right {self.right}")
                 return self.right.contains(target)
             else:
-                print(f"target {target} == self.right {self.right}")
                 return True            
         pass
 
-# 20.11 seconds
+
 duplicates = []
+
+# ~20 seconds
 # for name_1 in names_1:
 #     for name_2 in names_2:
 #         if name_1 == name_2:
 #             duplicates.append(name_1)
 
+# ~0.33 seconds!!
+# plug in first value to root
+tree = BinarySearchTree(names_1[0])
+# add first file's names to tree
+for name in names_1:
+    tree.insert(name)
+for name in names_2:
+    # use contain search function to find duplicates
+    if tree.contains(name):
+        # add duplicates to list
+        duplicates.append(name)
 
 
 end_time = time.time()
