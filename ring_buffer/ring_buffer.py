@@ -7,7 +7,7 @@ class RingBuffer:
   def append(self, item):
     length = len(self.storage)
     #if the current storage is at capacity
-    for i in range (0, length):
+    for i in range (0, length): 
         if self.storage[i] == None:
             self.storage[i] = item
             print(f"for i self.storage: {self.storage}")
