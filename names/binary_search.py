@@ -1,15 +1,3 @@
-import time
-
-start_time = time.time()
-
-f = open('names_1.txt', 'r')
-names_1 = f.read().split("\n")  # List containing 10000 names
-f.close()
-
-f = open('names_2.txt', 'r')
-names_2 = f.read().split("\n")  # List containing 10000 names
-f.close()
-
 class BinarySearchTree:
     def __init__(self, value):
         self.value = value
@@ -66,16 +54,23 @@ class BinarySearchTree:
                 return True            
         pass
 
-# 20.11 seconds
-duplicates = []
-# for name_1 in names_1:
-#     for name_2 in names_2:
-#         if name_1 == name_2:
-#             duplicates.append(name_1)
+# returns the maximum value in the binary search tree.
+    def get_max(self):
+        # find rightmost node
+        max = self
+        while max.right:
+            max = max.right
+        return max.value
+        pass
 
-
-
-end_time = time.time()
-print (f"{len(duplicates)} duplicates:\n\n{', '.join(duplicates)}\n\n")
-print (f"runtime: {end_time - start_time} seconds")
+# performs a traversal of _every_ node in the tree, executing the passed-in callback function on each tree node value. 
+# There is a myriad of ways to perform tree traversal; in this case any of them should work. 
+    def for_each(self, cb):
+        Inorder
+        if self:
+            if self.left:
+                self.left.for_each(cb)
+            cb(self.value)
+            if self.right:
+                self.right.for_each(cb)
 
